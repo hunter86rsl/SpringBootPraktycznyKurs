@@ -16,6 +16,10 @@ public class CourseController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<Course> createCourse(@RequestBody Course course) {
 
+        if (course.getId() == null || course.getId() < 0) {
+            throw new WrondIdException("Variable id is null or less then 0");
+        }
+
         courses.add(course);
         System.out.println(course.getName());
         System.out.println(course.getLengthInSeconds());
@@ -40,7 +44,7 @@ public class CourseController {
         return getCourse(id);
     }
 
-//    @RequestMapping(value = "/bought", method = RequestMethod.GET)
+    //    @RequestMapping(value = "/bought", method = RequestMethod.GET)
 //    public ResponseEntity<List<Course>> getBoughtCourses() {
 //        return new ResponseEntity<>(courses, HttpStatus.ACCEPTED);
 //    }
@@ -48,7 +52,7 @@ public class CourseController {
         Course course = null;
 
         for (Course c : courses) {
-            if (c.getId()!=null & c.getId().equals(id)) {
+            if (c.getId() != null && c.getId().equals(id)) {
                 course = c;
                 break;
             }
