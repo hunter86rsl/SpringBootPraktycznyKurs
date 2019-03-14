@@ -1,4 +1,4 @@
-package pl.anikiel.springbootcourse;
+package pl.anikiel.springbootcourse.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

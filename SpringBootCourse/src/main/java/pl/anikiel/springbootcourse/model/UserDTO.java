@@ -1,9 +1,9 @@
-package pl.anikiel.springbootcourse;
+package pl.anikiel.springbootcourse.model;
 
 import lombok.Data;
 
 @Data
-public class User {
+public class UserDTO {
 
     private String firstName;
     private String lastName;

@@ -1,9 +1,9 @@
-package pl.anikiel.springbootcourse;
+package pl.anikiel.springbootcourse.model;
 
 import lombok.Data;
 
 @Data
-public class Course {
+public class CourseDTO {
 
     private Long id;
     private String name;

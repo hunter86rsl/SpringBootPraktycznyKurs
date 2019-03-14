@@ -1,4 +1,4 @@
-package pl.anikiel.springbootcourse;
+package pl.anikiel.springbootcourse.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
