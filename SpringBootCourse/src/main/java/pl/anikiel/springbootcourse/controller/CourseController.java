@@ -8,6 +8,7 @@ import pl.anikiel.springbootcourse.exception.WrondIdException;
 import pl.anikiel.springbootcourse.model.CourseDTO;
 import pl.anikiel.springbootcourse.persistence.model.Course;
 import pl.anikiel.springbootcourse.persistence.repository.CourseRepo;
+import pl.anikiel.springbootcourse.service.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class CourseController {
     public CourseDTO buyCourse(@PathVariable(value = "id") Long id) {
         System.out.println("buyCourse");
         Course c = courseRepo.getOne(id);
-        return new CourseDTO(c.getId(), c.getName(), 560 );
+        return Mapper.courseToDTO(c);
     }
 
     @RequestMapping(value = "buy2", method = RequestMethod.POST)

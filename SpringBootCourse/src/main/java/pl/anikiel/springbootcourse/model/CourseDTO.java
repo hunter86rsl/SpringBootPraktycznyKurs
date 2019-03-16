@@ -1,10 +1,9 @@
 package pl.anikiel.springbootcourse.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 public class CourseDTO {
 
     private Long id;
