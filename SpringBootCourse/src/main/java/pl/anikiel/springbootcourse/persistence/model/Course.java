@@ -1,18 +1,17 @@
 package pl.anikiel.springbootcourse.persistence.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @Table(name = "courses")
-public class Course {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "id")
-    private Long id;
+public class Course extends BaseEntity{
 
     @Column(name = "name")
     private String name;

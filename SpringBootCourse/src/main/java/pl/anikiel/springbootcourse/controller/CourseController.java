@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.anikiel.springbootcourse.exception.WrondIdException;
 import pl.anikiel.springbootcourse.model.CourseDTO;
 import pl.anikiel.springbootcourse.persistence.model.Course;
-import pl.anikiel.springbootcourse.persistence.repository.CourseRepo;
-import pl.anikiel.springbootcourse.service.Mapper;
+import pl.anikiel.springbootcourse.service.CourseService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ public class CourseController {
     private List<CourseDTO> courses = new ArrayList<>();
 
     @Autowired
-    CourseRepo courseRepo;
+    private CourseService courseService;
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO courseDTO) {
@@ -44,8 +43,11 @@ public class CourseController {
     @RequestMapping(value = "buy/{id}", method = RequestMethod.GET)
     public CourseDTO buyCourse(@PathVariable(value = "id") Long id) {
         System.out.println("buyCourse");
-        Course c = courseRepo.getOne(id);
-        return Mapper.courseToDTO(c);
+        Course course = new Course();
+        course.setName("ccc1");
+        courseService.save(course);
+        return null;
+//        return Mapper.courseToDTO(c);
     }
 
     @RequestMapping(value = "buy2", method = RequestMethod.POST)

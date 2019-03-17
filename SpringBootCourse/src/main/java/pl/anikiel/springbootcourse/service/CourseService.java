@@ -1,10 +1,10 @@
 package pl.anikiel.springbootcourse.service;
 
-import java.util.List;
+import pl.anikiel.springbootcourse.model.CourseDTO;
+import pl.anikiel.springbootcourse.persistence.model.Course;
+import pl.anikiel.springbootcourse.persistence.repository.CourseRepo;
 
-public interface CourseService<T> extends BaseService {
+public interface CourseService extends BaseService<Course, Long, CourseRepo> {
 
-    public List<T> getBought();
-
-    public T buyCourse(int id);
+    CourseDTO getCourseDtoById(Long id);
 }

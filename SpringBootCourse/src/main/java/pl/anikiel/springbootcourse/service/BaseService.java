@@ -1,18 +1,20 @@
 package pl.anikiel.springbootcourse.service;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import pl.anikiel.springbootcourse.persistence.model.BaseEntity;
 
-public interface BaseService<T> {
+import java.io.Serializable;
+import java.util.Collection;
 
-    public void save(T t);
+public interface BaseService<T extends BaseEntity, K extends Serializable, R extends JpaRepository<T, K>> {
 
-    public T read(int id);
+    R getRepository();
 
-    public T readAll(List<Integer> list);
+    T save(T entity);
 
-    public void update(T t);
+    T delete(K id);
 
-    public void delete(T t);
+    Collection<T> getAll();
 
-    public void delete(int id);
+    T getOne(K id);
 }
