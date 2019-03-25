@@ -4,9 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.anikiel.springbootcourse.exception.WrondIdException;
+import pl.anikiel.springbootcourse.exception.WrongIdException;
 import pl.anikiel.springbootcourse.model.CourseDTO;
-import pl.anikiel.springbootcourse.persistence.model.Course;
 import pl.anikiel.springbootcourse.service.CourseService;
 
 import java.util.ArrayList;
@@ -24,28 +23,27 @@ public class CourseController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO courseDTO) {
 
-        if (courseDTO.getId() == null || courseDTO.getId() < 0) {
-            throw new WrondIdException("Variable id is null or less then 0");
+        if (courseDTO.getId() != null) {
+            throw new WrongIdException("Created course shouldn't have id");
         }
 
-        courses.add(courseDTO);
-        System.out.println(courseDTO.getName());
-        System.out.println(courseDTO.getLengthInSeconds());
+        System.out.println("/course/create" + courseDTO.getName());
+        CourseDTO dto = courseService.createCourse(courseDTO);
 
-        return new ResponseEntity<>(courseDTO, HttpStatus.CREATED);
+        return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/available", method = RequestMethod.GET)
     public ResponseEntity<List<CourseDTO>> getAvailableCourses() {
-        return new ResponseEntity<>(courses, HttpStatus.OK);
+        return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "buy/{id}", method = RequestMethod.GET)
     public CourseDTO buyCourse(@PathVariable(value = "id") Long id) {
-        System.out.println("buyCourse");
-        Course course = new Course();
-        course.setName("ccc1");
-        courseService.save(course);
+//        System.out.println("buyCourse");
+//        Course course = new Course();
+//        course.setName("ccc1");
+//        courseService.save(course);
         return null;
 //        return Mapper.courseToDTO(c);
     }

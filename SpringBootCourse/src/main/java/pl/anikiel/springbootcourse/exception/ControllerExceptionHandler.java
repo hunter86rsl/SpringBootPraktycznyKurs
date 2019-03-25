@@ -13,7 +13,7 @@ import java.util.Date;
 @ControllerAdvice
 @RestController
 public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
-    @ExceptionHandler(WrondIdException.class)
+    @ExceptionHandler(WrongIdException.class)
     public ResponseEntity<ExceptionResponse> handleWrondIdException(Exception ex, WebRequest request) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
                 ex.getStackTrace()[0].toString(), request.getDescription(true));

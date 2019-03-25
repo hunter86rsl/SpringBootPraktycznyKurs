@@ -1,7 +1,13 @@
 package pl.anikiel.springbootcourse.service;
 
-public interface UserService<T> extends BaseService {
+import pl.anikiel.springbootcourse.model.UserDTO;
+import pl.anikiel.springbootcourse.persistence.model.User;
+import pl.anikiel.springbootcourse.persistence.repository.UserRepo;
 
-    public void confirmUser(int id);
+public interface UserService extends BaseService<User, Long, UserRepo> {
+
+    UserDTO createUser(UserDTO userDTO);
+
+    UserDTO editUser(UserDTO userDTO);
 
 }

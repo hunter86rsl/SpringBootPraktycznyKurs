@@ -18,9 +18,6 @@ public class BaseEntity implements Serializable {
     @Column(name = "active")
     private Boolean active;
 
-    @Column(name = "name")
-    private String name;
-
     @Column(name = "created_date", updatable = false)
     private Date createdDate;
 
